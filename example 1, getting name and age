@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+private:
+    string name;  // Private member
+    int age;      // Private member
+
+public:
+    void setName(string n) {
+        name = n;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    void setAge(int a) {
+        if (a > 0) {
+            age = a;
+        }
+    }
+
+    int getAge() {
+        return age;
+    }
+};
+
+int main() {
+    Person person;
+    person.setName("Alice");
+    person.setAge(30);
+
+    cout << "Name: " << person.getName() << endl;
+    cout << "Age: " << person.getAge() << endl;
+
+    return 0;
+}
+
