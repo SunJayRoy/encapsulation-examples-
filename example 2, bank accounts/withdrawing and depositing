@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountHolderName;
+    double balance;
+
+public:
+    // Constructor
+    BankAccount(string name, double initialBalance) {
+        accountHolderName = name;
+        if (initialBalance >= 0) {
+            balance = initialBalance;
+        } else {
+            balance = 0;
+        }
+    }
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+
+    double getBalance() {
+        return balance;
+    }
+};
+
+int main() {
+    BankAccount account("Bob", 1000.0);
+    account.deposit(500.0);
+    account.withdraw(300.0);
+
+    cout << "Balance: " << account.getBalance() << endl;
+
+    return 0;
+}
