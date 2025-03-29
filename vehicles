@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Vehicle {
+private:
+    string brand;  // Encapsulated data
+    int year;
+
+protected:
+    // Protected methods for derived classes
+    void setBrand(string b) {
+        brand = b;
+    }
+
+    void setYear(int y) {
+        year = y;
+    }
+
+public:
+    virtual void displayInfo() {
+        cout << "Brand: " << brand << ", Year: " << year << endl;
+    }
+
+    Vehicle(string b, int y) {
+        setBrand(b);
+        setYear(y);
+    }
+};
+
+class Car : public Vehicle {
+private:
+    int numDoors;
+
+public:
+    Car(string brand, int year, int doors) : Vehicle(brand, year) {
+        numDoors = doors;
+    }
+
+    void displayInfo() override {
+        Vehicle::displayInfo();  // Call base class function
+        cout << "Number of doors: " << numDoors << endl;
+    }
+};
+
+int main() {
+    Car myCar("Toyota", 2022, 4);
+    myCar.displayInfo();
+
+    return 0;
+}
